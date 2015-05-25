@@ -32,6 +32,7 @@ namespace libspotifydotnet {
     public static partial class libspotify {
 
         [DllImport("libspotify")]
+        [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool sp_track_is_loaded(IntPtr trackPtr);
        
         [DllImport("libspotify")]
@@ -41,19 +42,22 @@ namespace libspotifydotnet {
         public static extern sp_availability sp_track_get_availability(IntPtr sessionPtr, IntPtr trackPtr);
 
         [DllImport("libspotify")]
+        [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool sp_track_is_local(IntPtr sessionPtr, IntPtr trackPtr);
 
         [DllImport("libspotify")]
+        [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool sp_track_is_autolinked(IntPtr sessionPtr, IntPtr trackPtr);
 
         [DllImport("libspotify")]
         public static extern IntPtr sp_track_get_playable(IntPtr sessionPtr, IntPtr trackPtr);
 
         [DllImport("libspotify")]
+        [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool sp_track_is_starred(IntPtr sessionPtr, IntPtr trackPtr);
 
         [DllImport("libspotify")]
-        public static extern sp_error sp_track_set_starred(IntPtr sessionPtr, IntPtr tracksArrayPtr, int num_tracks, bool star);
+        public static extern sp_error sp_track_set_starred(IntPtr sessionPtr, IntPtr tracksArrayPtr, int num_tracks, [MarshalAs(UnmanagedType.I1)]bool star);
 
         [DllImport("libspotify")]
         public static extern int sp_track_num_artists(IntPtr trackPtr);

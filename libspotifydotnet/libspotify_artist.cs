@@ -35,6 +35,7 @@ namespace libspotifydotnet {
         public static extern IntPtr sp_artist_name(IntPtr artistPtr);
 
         [DllImport("libspotify")]
+        [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool sp_artist_is_loaded(IntPtr artistPtr);
 
         [DllImport("libspotify")]

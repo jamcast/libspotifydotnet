@@ -44,6 +44,7 @@ namespace libspotifydotnet {
         public static extern IntPtr sp_artistbrowse_create(IntPtr sessionPtr, IntPtr artistPtr, sp_artistbrowse_type type, IntPtr callbackPtr, IntPtr userDataPtr);
 
         [DllImport("libspotify")]
+        [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool sp_artistbrowse_is_loaded(IntPtr artistBrowsePtr);
 
         [DllImport("libspotify")]

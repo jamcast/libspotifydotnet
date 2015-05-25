@@ -55,6 +55,7 @@ namespace libspotifydotnet {
         }
 
         [DllImport("libspotify")]
+        [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool sp_playlist_is_loaded(IntPtr playlistPtr);
 
         [DllImport("libspotify")]
@@ -76,10 +77,11 @@ namespace libspotifydotnet {
         public static extern IntPtr sp_playlist_track_creator(IntPtr playlistPtr, int index);
 
         [DllImport("libspotify")]
+        [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool sp_playlist_track_seen(IntPtr playlistPtr, int index);
 
         [DllImport("libspotify")]
-        public static extern sp_error sp_playlist_track_set_seen(IntPtr playlistPtr, int index, bool seen);
+        public static extern sp_error sp_playlist_track_set_seen(IntPtr playlistPtr, int index, [MarshalAs(UnmanagedType.I1)]bool seen);
 
         [DllImport("libspotify")]
         public static extern IntPtr sp_playlist_track_message(IntPtr playlistPtr, int index);
@@ -94,21 +96,24 @@ namespace libspotifydotnet {
         public static extern IntPtr sp_playlist_owner(IntPtr playlistPtr);
 
         [DllImport("libspotify")]
+        [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool sp_playlist_is_collaborative(IntPtr playlistPtr);
 
         [DllImport("libspotify")]
-        public static extern sp_error sp_playlist_set_collaborative(IntPtr playlistPtr, bool collaborative);
+        public static extern sp_error sp_playlist_set_collaborative(IntPtr playlistPtr, [MarshalAs(UnmanagedType.I1)]bool collaborative);
 
         [DllImport("libspotify")]
-        public static extern sp_error sp_playlist_set_autolink_tracks(IntPtr playlistPtr, bool link);
+        public static extern sp_error sp_playlist_set_autolink_tracks(IntPtr playlistPtr, [MarshalAs(UnmanagedType.I1)]bool link);
 
         [DllImport("libspotify")]
         public static extern IntPtr sp_playlist_get_description(IntPtr playlistPtr);
 
         [DllImport("libspotify")]
+        [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool sp_playlist_get_image(IntPtr playlistPtr, IntPtr imagePtr);
 
         [DllImport("libspotify")]
+        [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool sp_playlist_has_pending_changes(IntPtr playlistPtr);
 
         [DllImport("libspotify")]
@@ -127,13 +132,14 @@ namespace libspotifydotnet {
         public static extern IntPtr sp_playlist_subscribers(IntPtr playlistPtr);
 
         [DllImport("libspotify")]
+        [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool sp_playlist_is_in_ram(IntPtr sessionPtr, IntPtr playlistPtr);
 
         [DllImport("libspotify")]
         public static extern IntPtr sp_playlist_create(IntPtr sessionPtr, IntPtr linkPtr);
 
         [DllImport("libspotify")]
-        public static extern sp_error sp_playlist_set_offine_mode(IntPtr sessionPtr, IntPtr playlistPtr, bool offline);
+        public static extern sp_error sp_playlist_set_offline_mode(IntPtr sessionPtr, IntPtr playlistPtr, [MarshalAs(UnmanagedType.I1)]bool offline);
 
         [DllImport("libspotify")]
         public static extern sp_playlist_offline_status sp_playlist_get_offline_status(IntPtr sessionPtr, IntPtr playlistPtr);
@@ -157,6 +163,7 @@ namespace libspotifydotnet {
         public static extern int sp_playlistcontainer_num_playlists(IntPtr playlistContainerPtr);
 
         [DllImport("libspotify")]
+        [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool sp_playlistcontainer_is_loaded(IntPtr playlistContainerPtr);
 
         [DllImport("libspotify")]
@@ -181,7 +188,7 @@ namespace libspotifydotnet {
         public static extern sp_error sp_playlistcontainer_remove_playlist(IntPtr playlistContainerPtr, int index);
 
         [DllImport("libspotify")]
-        public static extern sp_error sp_playlistcontainer_move_playlist(IntPtr playlistContainerPtr, int index, int new_position, bool dry_run);
+        public static extern sp_error sp_playlistcontainer_move_playlist(IntPtr playlistContainerPtr, int index, int new_position, [MarshalAs(UnmanagedType.I1)]bool dry_run);
 
         [DllImport("libspotify")]
         public static extern sp_error sp_playlistcontainer_add_folder(IntPtr playlistContainerPtr, int index, IntPtr namePtr);

@@ -54,7 +54,7 @@ namespace libspotifydotnet {
             public int done_tracks;
             public int copied_tracks;
             public int willnotcopy_tracks;
-            public int error_tracks;
+            public int error_tracks;            
             public bool syncing;
         }
 
@@ -90,9 +90,9 @@ namespace libspotifydotnet {
             public int application_key_size;
             public string user_agent;
             public IntPtr callbacks;
-            public IntPtr userdata;
-            public bool compress_playlists;
-            public bool dont_save_metadata_for_playlists;
+            public IntPtr userdata;            
+            public bool compress_playlists;            
+            public bool dont_save_metadata_for_playlists;            
             public bool initially_unload_playlists;
         }
 
@@ -189,7 +189,7 @@ namespace libspotifydotnet {
         public static extern sp_error sp_session_release(IntPtr sessionPtr);
 
         [DllImport("libspotify")]
-        public static extern sp_error sp_session_login(IntPtr sessionPtr, string username, string password, bool rememberMe, string blob);
+        public static extern sp_error sp_session_login(IntPtr sessionPtr, string username, string password, [MarshalAs(UnmanagedType.I1)]bool rememberMe, string blob);
         
         [DllImport("libspotify")]
         public static extern sp_error sp_session_relogin(IntPtr sessionPtr);
@@ -231,7 +231,7 @@ namespace libspotifydotnet {
         public static extern sp_error sp_session_player_seek(IntPtr sessionPtr, int offset);
 
         [DllImport("libspotify")]
-        public static extern sp_error sp_session_player_play(IntPtr sessionPtr, bool play);
+        public static extern sp_error sp_session_player_play(IntPtr sessionPtr, [MarshalAs(UnmanagedType.I1)]bool play);
 
         [DllImport("libspotify")]
         public static extern sp_error sp_session_player_unload(IntPtr sessionPtr);
@@ -258,18 +258,20 @@ namespace libspotifydotnet {
         public static extern sp_error sp_session_preferred_bitrate(IntPtr sessionPtr, sp_bitrate bitrate);
 
         [DllImport("libspotify")]
-        public static extern sp_error sp_session_preferred_offline_bitrate(IntPtr sessionPtr, sp_bitrate bitrate, bool allow_resync);
+        public static extern sp_error sp_session_preferred_offline_bitrate(IntPtr sessionPtr, sp_bitrate bitrate, [MarshalAs(UnmanagedType.I1)]bool allow_resync);
 
         [DllImport("libspotify")]
+        [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool sp_session_get_volume_normalization(IntPtr sessionPtr);
 
         [DllImport("libspotify")]
-        public static extern bool sp_session_set_volume_normalization(IntPtr sessionPtr, bool on);
+        public static extern sp_error sp_session_set_volume_normalization(IntPtr sessionPtr, [MarshalAs(UnmanagedType.I1)]bool on);
 
         [DllImport("libspotify")]
-        public static extern sp_error sp_session_set_private_session(IntPtr sessionPtr, bool enabled);
+        public static extern sp_error sp_session_set_private_session(IntPtr sessionPtr, [MarshalAs(UnmanagedType.I1)]bool enabled);
 
         [DllImport("libspotify")]
+        [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool sp_session_is_private_session(IntPtr sessionPtr);
 
         [DllImport("libspotify")]
@@ -279,7 +281,7 @@ namespace libspotifydotnet {
         public static extern sp_error sp_session_is_scrobbling(IntPtr sessionPtr, sp_social_provider provider, sp_scrobbling_state state);
 
         [DllImport("libspotify")]
-        public static extern sp_error sp_session_is_scrobbling_possible(IntPtr sessionPtr, sp_social_provider provider, out bool isPossible);
+        public static extern sp_error sp_session_is_scrobbling_possible(IntPtr sessionPtr, sp_social_provider provider, [MarshalAs(UnmanagedType.I1)]out bool isPossible);
 
         [DllImport("libspotify")]
         public static extern sp_error sp_session_set_social_credentials(IntPtr sessionPtr, sp_social_provider provider, string username, string password);
@@ -297,6 +299,7 @@ namespace libspotifydotnet {
         public static extern int sp_offline_num_playlists(IntPtr sessionPtr);
 
         [DllImport("libspotify")]
+        [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool sp_offline_sync_get_status(IntPtr sessionPtr, IntPtr status);
 
         [DllImport("libspotify")]

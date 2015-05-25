@@ -46,6 +46,7 @@ namespace libspotifydotnet {
         public static extern IntPtr sp_toplistbrowse_create(IntPtr sessionPtr, sp_toplisttype type, int region, IntPtr usernamePtr, IntPtr browseCompleteCb, IntPtr userDataPtr);
         
         [DllImport("libspotify")]
+        [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool sp_toplistbrowse_is_loaded(IntPtr tlb);
 
         [DllImport("libspotify")]

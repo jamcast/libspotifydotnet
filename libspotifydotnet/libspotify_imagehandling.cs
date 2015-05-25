@@ -51,6 +51,7 @@ namespace libspotifydotnet {
         public static extern sp_error sp_image_remove_load_callback(IntPtr imagePtr, IntPtr callbackPtr, IntPtr userDataPtr);
 
         [DllImport("libspotify")]
+        [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool sp_image_is_loaded(IntPtr imagePtr);
 
         [DllImport("libspotify")]

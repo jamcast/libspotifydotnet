@@ -44,6 +44,7 @@ namespace libspotifydotnet {
                                                        int playlist_offset, int playlist_count, sp_search_type search_type,
                                                        IntPtr callbackPtr, IntPtr userDataPtr);
         [DllImport("libspotify")]
+        [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool sp_search_is_loaded(IntPtr searchPtr);
 
         [DllImport("libspotify")]
